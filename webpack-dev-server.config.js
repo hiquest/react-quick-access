@@ -40,6 +40,10 @@ const config = {
         test: /\.jsx$/,
         loaders: ['babel-loader'],
         exclude: [nodeModulesPath]
+      },
+      {
+        test: /\.scss$/,
+        loaders: [ 'style-loader', 'css-loader', 'sass-loader' ]
       }
     ]
   }

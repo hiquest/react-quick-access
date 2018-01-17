@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 
-// import { Modal } from './LookupModal'
+import { Modal } from './Modal.jsx'
 import { Backdrop } from './Backdrop.jsx'
+
+import './app.scss'
 
 export class QuickAccess extends Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = { }
 
     this.show = this.show.bind(this)
     this.hide = this.hide.bind(this)
@@ -28,8 +30,20 @@ export class QuickAccess extends Component {
       >
         {this.props.children}
 
-        { this.state.showModal && <Backdrop onClick={this.hide} /> }
-        { /* this.state.showModal && <LookupModal onHide={this.hide} key={'lookup-modal'} /> */ }
+        {
+          this.state.showModal &&
+            <Backdrop clicked={this.hide} />
+        }
+        {
+          this.state.showModal && (
+            <Modal
+              placeholder={this.props.placeholder}
+              source={this.props.source}
+              sourceType={this.props.sourceType || 'plain'}
+              onHide={this.hide}
+            />
+          )
+        }
       </div>
     )
   }
