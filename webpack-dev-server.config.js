@@ -16,7 +16,14 @@ const config = {
     hot: true, // Live-reload
     inline: true,
     port: 8090, // Port Number
-    host: 'localhost' // Change to '0.0.0.0' for external facing server
+    host: 'localhost', // Change to '0.0.0.0' for external facing server
+    proxy: {
+      '/api': {
+        target: 'https://restcountries.eu/rest/v2',
+        pathRewrite: {'^/api': ''},
+        secure: false
+      }
+    }
   },
   devtool: 'cheap-module-source-map',
   output: {

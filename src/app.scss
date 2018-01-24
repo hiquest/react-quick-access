@@ -1,5 +1,10 @@
 $hover-color: #f1f1f1;
 
+input::-webkit-input-placeholder {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 100;
+}
+
 .quick-access-backdrop {
   position: fixed;
   top: 0;
@@ -58,15 +63,39 @@ $hover-color: #f1f1f1;
   &.open {
     max-height: 400px;
   }
-  .item {
-    padding: 10px;
-    cursor: pointer;
-    &:hover, &.selected {
-      background: $hover-color;
-    }
-    img {
-      max-width: 50px;
-    }
-  }
+}
 
+.quick-access-item {
+  padding: 10px;
+  cursor: pointer;
+  &:hover, &.active {
+    background: $hover-color;
+  }
+  img {
+    max-width: 50px;
+  }
+  clear: both;
+  overflow: hidden;
+  position: relative;
+}
+
+.quick-access-image {
+  width: 50px;
+  height: 20px;
+  margin-right: 10px;
+  img {
+    width: 100%;
+  }
+  float: left;
+}
+
+.quick-access-label {
+}
+
+.quick-access-handler {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  font-size: 24px;
+  color: #ccc;
 }

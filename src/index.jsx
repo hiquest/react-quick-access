@@ -12,9 +12,10 @@ export class QuickAccess extends Component {
 
     this.show = this.show.bind(this)
     this.hide = this.hide.bind(this)
+    this.selected = this.selected.bind(this)
   }
 
-  show () {
+  show (e) {
     this.setState({ showModal: true })
   }
 
@@ -22,13 +23,19 @@ export class QuickAccess extends Component {
     this.setState({ showModal: false })
   }
 
+  selected (item) {
+    this.hide()
+    this.props.selected(item)
+  }
+
   render () {
     return (
-      <div
+      <span
         className='quick-access'
-        onClick={this.show}
       >
-        {this.props.children}
+        <span onClick={this.show}>
+          {this.props.children}
+        </span>
 
         {
           this.state.showModal &&
@@ -39,12 +46,12 @@ export class QuickAccess extends Component {
             <Modal
               placeholder={this.props.placeholder}
               source={this.props.source}
-              sourceType={this.props.sourceType || 'plain'}
               onHide={this.hide}
+              selected={this.selected}
             />
           )
         }
-      </div>
+      </span>
     )
   }
 }
